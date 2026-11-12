@@ -9,6 +9,7 @@ services:
       - "3307:3306"
     volumes:
       - fw-db-data:/var/lib/mysql
+      - ./initdb:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD-SHELL", "mysql -h 127.0.0.1 -u root -p\"$$MYSQL_ROOT_PASSWORD\" -e 'SELECT 1' > /dev/null"]
       interval: 5s
